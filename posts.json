@@ -1,0 +1,14 @@
+[
+    { 
+        id: 1, 
+        title: "Meu Primeiro Post com Node.js", 
+        author: "Gemini", 
+        content: "Este é o conteúdo do primeiro post do blog. Estamos usando Node.js e Express!" 
+    },
+    { 
+        id: 2, 
+        title: "Dicas de Desenvolvimento Web", 
+        author: "Gemini", 
+        content: "Lembre-se de sempre manter seu código limpo e utilizar as melhores práticas de segurança." 
+    }
+]
