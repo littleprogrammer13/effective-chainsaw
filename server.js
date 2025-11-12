@@ -5,15 +5,13 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// 1. Configura a pasta 'public' para arquivos como index.html e script.js
+// Middleware para servir arquivos estáticos da pasta 'public'
+// Isso inclui index.html, style.css e script.js
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 2. Configura a pasta 'data' para ser acessível diretamente
-//    Qualquer arquivo dentro de 'data' será acessível via /data/nome_do_arquivo
+// Middleware para servir arquivos da pasta 'data'
+// Isso torna o arquivo meu-blog-json/data/posts.json acessível via /data/posts.json
 app.use('/data', express.static(path.join(__dirname, 'data'))); 
-
-// REMOVA a rota app.get('/api/posts', ...)
-// Não precisamos mais dela, pois o arquivo será acessado diretamente.
 
 // Iniciar o servidor
 app.listen(port, () => {
