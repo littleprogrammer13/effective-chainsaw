@@ -2,27 +2,18 @@
 
 const express = require('express');
 const path = require('path');
-const fs = require('fs'); // Para ler o arquivo JSON
 const app = express();
 const port = 3000;
 
-// Middleware para servir arquivos estáticos da pasta 'public'
+// 1. Configura a pasta 'public' para arquivos como index.html e script.js
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota da API para retornar todos os posts
-app.get('/api/posts', (req, res) => {
-    const filePath = path.join(__dirname, 'data', 'posts.json');
-    
-    // Ler o arquivo JSON de forma síncrona (simples para um blog pequeno)
-    try {
-        const postsData = fs.readFileSync(filePath, 'utf8');
-        // Retorna os dados como JSON
-        res.json(JSON.parse(postsData));
-    } catch (error) {
-        console.error("Erro ao ler o arquivo JSON:", error);
-        res.status(500).json({ message: "Erro ao carregar os posts." });
-    }
-});
+// 2. Configura a pasta 'data' para ser acessível diretamente
+//    Qualquer arquivo dentro de 'data' será acessível via /data/nome_do_arquivo
+app.use('/data', express.static(path.join(__dirname, 'data'))); 
+
+// REMOVA a rota app.get('/api/posts', ...)
+// Não precisamos mais dela, pois o arquivo será acessado diretamente.
 
 // Iniciar o servidor
 app.listen(port, () => {
