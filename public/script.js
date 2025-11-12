@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchPosts() {
         try {
             // Faz a requisição GET para a rota que lê o JSON
-            const response = await fetch('/api/posts');
+            const response = await fetch('/data/posts');
             
             // Verifica se a requisição foi bem-sucedida (status 200)
             if (!response.ok) {
